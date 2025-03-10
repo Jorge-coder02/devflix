@@ -54,12 +54,12 @@ function MovieDetail() {
   }, [movie, videoKey]);
 
   if (!movie) {
-    return <p className="bg-base-100">Cargando...</p>;
+    return <p className="bg-base-100">Loading...</p>;
   }
 
   return (
     <div className="my-10 bg-base-100 p-4 flex flex-col items-center gap-y-10">
-      <h1 className="text-2xl">Detalles de la película</h1>
+      <h1 className="text-3xl">Film details</h1>
 
       {/* Contenedor principal cuadro */}
       <div className="w-5/5 sm:w-3/5 flex flex-col lg:flex-row gap-y-10 gap-x-10 bg-base-100">
@@ -68,12 +68,16 @@ function MovieDetail() {
           {" "}
           <div className="w-56 ">
             <img
+              className=" rounded-lg"
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               alt={movie.title}
             ></img>
           </div>
           <div className="flex flex-col gap-y-4 justify-center items-center">
-            <a href={`https://www.youtube.com/embed/${videoKey}`}>
+            <a
+              target="_blank"
+              href={`https://www.youtube.com/embed/${videoKey}`}
+            >
               <button className="btn btn-primary">Trailer</button>
             </a>
             {/* <a href={`https://www.youtube.com/embed/${videoKey}`}>
@@ -83,7 +87,7 @@ function MovieDetail() {
         </div>
 
         {/* Contenedor der. */}
-        <div className=" [&>div]:p-4 p-6 bg-base-300">
+        <div className=" [&>div]:p-4 p-6 bg-base-300 rounded-md">
           {" "}
           <div>
             <h2 className="text-2xl font-semibold">{movie.title}</h2>
@@ -93,29 +97,25 @@ function MovieDetail() {
             <p>{movie.overview}</p>
           </div>
           <div>
-            <h3>Fecha de estreno: </h3>
+            <h3>Release date: </h3>
             <p>{movie.release_date}</p>
           </div>
           <div>
-            <h3>Idioma original: </h3>
+            <h3>Original language: </h3>
             <p>
               {movie.original_language === "en"
-                ? "Inglés"
+                ? "English"
                 : movie.original_language === "es"
-                ? "Español"
+                ? "Spanish"
                 : movie.original_language}
             </p>
           </div>
           <div>
-            <h3>Géneros: </h3>
+            <h3>Genre: </h3>
             <ul className="flex flex-wrap gap-x-2">
-              {movie.genres.map(
-                (
-                  genre //
-                ) => (
-                  <li key={genre.id}>{genre.name}</li>
-                )
-              )}
+              {movie.genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
             </ul>
           </div>
         </div>
