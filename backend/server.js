@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// const User = require("./User"); // Quitar cuando haya usuarios en la base de datos
 const cors = require("cors");
+const router = require("./user_routes.js");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -8,22 +10,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
-const { MONGO_URI } = process.env;
+const { MONGODB_URI } = process.env;
 
 // Conectar a MongoDB
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(MONGODB_URI)
+  .then(() => {
+    console.log("Conectado a MongoDB 🚀");
   })
-  .then(() => console.log("Conectado a MongoDB "))
   .catch((err) => console.error(err));
 
 // Rutas
-app.get("/", (req, res) => {
-  res.send("DevFlix backend funcionando 🚀");
-});
+app.use("/", router);
 
+// Abrir servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT} ✅`);
 });

@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
-import { useReducer } from "react";
+import { useReducer, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 import { Link } from "react-router-dom";
+
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const initialState = {
   email: "",
@@ -16,6 +20,8 @@ function reducer(state, action) {
 
 function Login({}) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     dispatch({
@@ -24,10 +30,6 @@ function Login({}) {
     });
   };
 
-  //   useEffect(() => {
-  //     console.log(state);
-  //   }, [state]);
-
   const handleAutocompletar = (e) => {
     e.preventDefault();
     // auto completar
@@ -35,11 +37,51 @@ function Login({}) {
     dispatch({ field: "password", value: "12345%validar" });
   };
 
-  const enviarFormulario = (e) => {
+  const enviarFormulario = async (e) => {
     e.preventDefault();
     // enviar formulario
-    console.log("Formulario enviado");
-    console.log(state);
+    console.log("Sending: ", state);
+    const userData = {
+      email: state.email,
+      password: state.password,
+    };
+    try {
+      // ✅ Respuesta correcta
+      const response = await axios.post(`${VITE_BACKEND_URL}/login`, userData);
+      console.log(response);
+      const jwt = response.data.token;
+      console.log("Token: ", jwt);
+      if (response.status === 200) {
+        console.log("Login successful");
+      } else if (response.status === 400) {
+        // ❌ Respuesta incorrecta
+        console.log("Incorrect login");
+      }
+      localStorage.setItem("token", jwt); // Guardar el token en localStorage
+      setError(null); // limpio errores
+      navigate("/"); // redirijo a la ruta Home
+
+      // ❌ Manejo de errores
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        // Error del backend
+        console.error("Error response from backend:", error.response.data);
+        setError(
+          error.response.data.err ||
+            error.response.data.message ||
+            "Unknown error"
+        );
+      } else if (error.request) {
+        // No se recibe respuesta del servidor
+        console.error("No response from server:", error.request);
+        setError("No response from server. Please try again later.");
+      } else {
+        // Error al configurar la solicitud
+        console.error("Error setting up request:", error.message);
+        setError("Error in request setup.");
+      }
+    }
   };
 
   return (
@@ -89,6 +131,7 @@ function Login({}) {
               Autocompletar
             </button>
           </div>
+          {error && <span className="text-red-500">{error}</span>}
         </form>
       </div>
     </div>
