@@ -44,7 +44,7 @@ function Login({}) {
 
   return (
     <div className="bg-base-100 flex justify-center items-center ">
-      <span className="absolute top-0 right-0 pr-8 pt-4">
+      <span className="absolute top-0 right-0 pr-8 lg:pr-36 pt-6">
         <Link to="/">Home</Link>
       </span>{" "}
       {/* Enlace a la ruta principal */}

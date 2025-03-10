@@ -12,7 +12,7 @@ function Home() {
   };
   return (
     <div className="flex justify-center min-h-[100dvh] py-4">
-      <span className="absolute top-0 right-0 pr-8 pt-4">
+      <span className="absolute top-0 right-0  pr-8 lg:pr-36 pt-6">
         <Link to="/login">Log In</Link> {/* Enlace a la ruta principal */}
       </span>
       <div className="flex flex-col items-center md:w-4/5 lg:w-3/5 py-10 gap-y-4 ">
