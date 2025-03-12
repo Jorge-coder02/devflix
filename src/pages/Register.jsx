@@ -159,16 +159,16 @@ function Register({}) {
 
   return (
     <div className="bg-base-100 flex justify-center items-center ">
-      <span className="flex gap-x-4 absolute top-0 right-0 pr-8 lg:pr-36 pt-6">
+      <span className="flex gap-x-4 absolute top-0 right-0 pr-8 lg:pr-26 pt-6">
         <Link to="/">Home</Link>
         <Link to="/login">Log in</Link>
       </span>{" "}
       {/* Enlace a la ruta principal */}
-      <div className="mt-16 w-full md:w-2/4 pt-12 pb-20 gap-y-6  ">
+      <div className="mt-6 w-5/6 md:w-2/4 pt-12 md:pt-8 gap-y-6">
         <form
-          className="flex flex-col items-center justify-center gap-y-4 [&>div>input]:mb-1 [&>div>input]:rounded-md 
-        [&>div>input]:w-60  [&>div>input]:p-1.5 [&>div>label]:text-lg min-w-full [&>div]:flex 
-        [&>div]:flex-col [&>div]:gap-y-1 border md:py-16"
+          className="flex flex-col items-center justify-center gap-y-6 min-w-full md:py-16 shadow-lg bg-base-200  
+          [&>div>input]:mb-1 [&>div>input]:rounded-md [&>div>input]:w-full [&>div>input]:p-1.5 py-8 md:p-0
+          [&>div>label]:text-lg [&>div]:flex [&>div]:flex-col [&>div]:gap-y-1 [&>div]:w-3/4 sm:[&>div]:w-4/6 xl:[&>div]:w-2/6 "
         >
           <h1 className="text-2xl">Sign up</h1>
           <div>
@@ -254,7 +254,7 @@ function Register({}) {
           <div className="">
             <p>{msgRespuesta}</p>
           </div>
-          <div className="!flex-row gap-x-8">
+          <div className="!flex-row justify-center items-center gap-x-8 flex-wrap">
             <button
               onClick={enviarFormulario}
               className="btn btn-primary text-white w-36 mt-4"

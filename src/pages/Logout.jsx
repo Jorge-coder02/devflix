@@ -12,6 +12,7 @@ function Logout() {
           <p className="font-semibold">Session closed</p>
           <Link to="/">Home</Link>
           <Link to="/Login">Login</Link>
+          <Link to="/Register">Register</Link>
         </div>
       </div>
     </div>
