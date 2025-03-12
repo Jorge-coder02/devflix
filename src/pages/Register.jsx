@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -251,7 +251,7 @@ function Register({}) {
                 </p>
               ))}
           </div>
-          <div className="">
+          <div className="text-center">
             <p>{msgRespuesta}</p>
           </div>
           <div className="!flex-row justify-center items-center gap-x-8 flex-wrap">
@@ -259,13 +259,13 @@ function Register({}) {
               onClick={enviarFormulario}
               className="btn btn-primary text-white w-36 mt-4"
             >
-              Login
+              Sign up
             </button>
             <button
               onClick={handleAutocompletar}
               className="btn btn-success text-white w-36 mt-4"
             >
-              Autocompletar
+              Autocomplete
             </button>
           </div>
         </form>

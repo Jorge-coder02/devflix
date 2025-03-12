@@ -6,13 +6,18 @@ function Logout() {
 
   return (
     <div className="bg-base-100">
-      <div className="flex flex-col gap-y-6 justify-center items-center min-h-[40dvh] mt-20 w-1/4 mx-auto border">
+      <div
+        className="flex flex-col gap-y-4 justify-center items-center min-h-[40dvh] mt-20 
+      container mx-auto border"
+      >
         <h2 className="text-3xl">Logout page</h2>
-        <div className="flex flex-col gap-y-2 justify-center items-center">
-          <p className="font-semibold">Session closed</p>
-          <Link to="/">Home</Link>
-          <Link to="/Login">Login</Link>
-          <Link to="/Register">Register</Link>
+        <div className=" [&>Link]:text-lg">
+          <p className="font-bold mb-4">Session closed</p>
+          <div className="flex flex-col gap-y-2 place-items-center text-lg">
+            <Link to="/">Home</Link>
+            <Link to="/Login">Login</Link>
+            <Link to="/Register">Register</Link>
+          </div>
         </div>
       </div>
     </div>

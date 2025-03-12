@@ -33,8 +33,8 @@ function Login({}) {
   const handleAutocompletar = (e) => {
     e.preventDefault();
     // auto completar
-    dispatch({ field: "email", value: "adminprueba@devflix.com" });
-    dispatch({ field: "password", value: "12345%validar" });
+    dispatch({ field: "email", value: "userdefault@devflix.com" });
+    dispatch({ field: "password", value: "12345%validar2" });
   };
 
   const enviarFormulario = async (e) => {
@@ -86,10 +86,12 @@ function Login({}) {
 
   return (
     <div className="bg-base-100 flex justify-center items-center ">
+      {/* Enlaces */}
       <span className="absolute top-0 right-0 pr-8 lg:pr-36 pt-6">
         <Link to="/">Home</Link>
-      </span>{" "}
-      {/* Enlace a la ruta principal */}
+      </span>
+
+      {/* Formulario */}
       <div className="mt-16 w-full md:w-2/4 pt-12 pb-20 gap-y-6  ">
         <form
           className="flex flex-col items-center justify-center gap-y-4 [&>div>input]:mb-2 [&>div>input]:rounded-md 
@@ -117,6 +119,15 @@ function Login({}) {
               value={state.password}
             />
           </div>
+
+          {/* Create account message */}
+          <div className="flex place-items-center w-auto md:w-96">
+            <Link to="/register" className="text-blue-600 text-lg">
+              Create a new account
+            </Link>
+          </div>
+
+          {/* Form buttons */}
           <div className="!flex-row gap-x-8">
             <button
               onClick={enviarFormulario}
@@ -128,8 +139,9 @@ function Login({}) {
               onClick={handleAutocompletar}
               className="btn btn-success text-white w-36 mt-4"
             >
-              Autocompletar
+              Autocomplete
             </button>
+            {/* Mensaje errores */}
           </div>
           {error && <span className="text-red-500">{error}</span>}
         </form>
