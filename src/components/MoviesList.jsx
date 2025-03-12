@@ -30,7 +30,7 @@ function MoviesList({ filtro }) {
 
   return (
     <div className="grid grid-cols-2 px-4 md:px-auto md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-x-10 gap-y-8">
-      {movies.slice(0, 22).map((movie) => (
+      {movies.slice(0, 20).map((movie) => (
         <Link to={`/movie/${movie.id}`} key={movie.id}>
           {/* Contenedor de cada película con hover */}
           <div className="relative bg-base-300 rounded-lg flex flex-col items-center cursor-pointer group">

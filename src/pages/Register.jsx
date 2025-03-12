@@ -2,6 +2,7 @@ import React from "react";
 import { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import NavBarLinks from "../components/NavBarLinks";
 
 const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -43,8 +44,8 @@ function Register({}) {
     }
   };
 
-  // Generar email random para registro
-  const generarEmail = (longitud) => {
+  // Generar email y password random para registro
+  const generarCadena = (longitud) => {
     const caracteres =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let cadena = "user";
@@ -52,21 +53,18 @@ function Register({}) {
       const caracter_random = caracteres.charAt(
         Math.floor(Math.random() * caracteres.length)
       );
-      console.log(Math.floor(Math.random * caracteres.length));
       cadena += caracter_random;
     }
-    const dominio = "@devflix.com";
-    cadena += dominio;
     return cadena;
   };
 
   const handleAutocompletar = (e) => {
     e.preventDefault();
-    const email_generado = generarEmail(6);
+    const password_generada = generarCadena(6);
     dispatch({ field: "name", value: "User Default" });
-    dispatch({ field: "email", value: email_generado }); // generar nuevo email para no repetir
-    dispatch({ field: "password", value: "12345%validar2" });
-    dispatch({ field: "password2", value: "12345%validar2" });
+    dispatch({ field: "email", value: generarCadena(6) + "@devflix.com" });
+    dispatch({ field: "password", value: password_generada });
+    dispatch({ field: "password2", value: password_generada });
     dispatch({ field: "age", value: 20 });
   };
 
@@ -177,10 +175,7 @@ function Register({}) {
 
   return (
     <div className="bg-base-100 flex justify-center items-center ">
-      <span className="flex gap-x-4 absolute top-0 right-0 pr-8 lg:pr-26 pt-6">
-        <Link to="/">Home</Link>
-        <Link to="/login">Log in</Link>
-      </span>{" "}
+      <NavBarLinks ruta_actual="/register"></NavBarLinks>
       {/* Enlace a la ruta principal */}
       <div className="mt-6 w-5/6 md:w-2/4 pt-12 md:pt-8 gap-y-6">
         <form

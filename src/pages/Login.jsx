@@ -1,5 +1,6 @@
 import { useReducer, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBarLinks from "../components/NavBarLinks";
 
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -87,9 +88,8 @@ function Login({}) {
   return (
     <div className="bg-base-100 flex justify-center items-center ">
       {/* Enlaces */}
-      <span className="absolute top-0 right-0 pr-8 lg:pr-36 pt-6">
-        <Link to="/">Home</Link>
-      </span>
+
+      <NavBarLinks ruta_actual="/"></NavBarLinks>
 
       {/* Formulario */}
       <div className="mt-16 w-full md:w-2/4 pt-12 pb-20 gap-y-6 rounded-lg shadow-lg bg-base-200   ">

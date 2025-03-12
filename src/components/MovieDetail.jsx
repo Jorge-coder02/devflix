@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import NavBarLinks from "./NavBarLinks";
 
 const API_URL = import.meta.env.VITE_URL_BASE;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -63,9 +64,7 @@ function MovieDetail() {
 
   return (
     <div className="my-10 bg-base-100 p-4 flex flex-col items-center gap-y-10">
-      <span className="absolute top-0 right-0 pr-8 lg:pr-36 pt-6">
-        <Link to="/">Home</Link>
-      </span>
+      <NavBarLinks ruta_actual="/no_navegable"></NavBarLinks>
       <h1 className="text-3xl">Film details</h1>
 
       {/* Contenedor principal cuadro */}

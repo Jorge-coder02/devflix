@@ -3,6 +3,7 @@ import MoviesList from "../components/MoviesList.jsx";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import { useState, useEffect } from "react";
+import NavBarLinks from "../components/NavBarLinks.jsx";
 
 function Home() {
   const [authenticated, setAuthenticated] = useState(false); // 👤
@@ -30,9 +31,7 @@ function Home() {
           </span>
         </div>
       ) : (
-        <span className="absolute top-0 right-0  pr-8 lg:pr-36 pt-6">
-          <Link to="/login">Log In</Link> {/* Enlace a la ruta principal */}
-        </span>
+        <NavBarLinks ruta_actual="/"></NavBarLinks>
       )}
 
       <div className="flex flex-col items-center md:w-4/5 lg:w-3/5 py-10 gap-y-4 ">
