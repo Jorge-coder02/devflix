@@ -92,11 +92,11 @@ function Login({}) {
       </span>
 
       {/* Formulario */}
-      <div className="mt-16 w-full md:w-2/4 pt-12 pb-20 gap-y-6  ">
+      <div className="mt-16 w-full md:w-2/4 pt-12 pb-20 gap-y-6 rounded-lg shadow-lg bg-base-200   ">
         <form
           className="flex flex-col items-center justify-center gap-y-4 [&>div>input]:mb-2 [&>div>input]:rounded-md 
-          [&>div>input]:w-60  [&>div>input]:p-1.5 [&>div>label]:text-lg min-w-full [&>div]:flex 
-          [&>div]:flex-col [&>div]:gap-y-1 border md:py-16"
+          [&>div>input]:w-60 [&>div>input]:p-1.5 [&>div>label]:text-lg min-w-full [&>div]:flex 
+          [&>div]:flex-col [&>div]:gap-y-1 md:py-16"
         >
           <h1 className="text-2xl">Login</h1>
           <div>

@@ -43,10 +43,28 @@ function Register({}) {
     }
   };
 
+  // Generar email random para registro
+  const generarEmail = (longitud) => {
+    const caracteres =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let cadena = "user";
+    for (let i = 0; i < longitud; i++) {
+      const caracter_random = caracteres.charAt(
+        Math.floor(Math.random() * caracteres.length)
+      );
+      console.log(Math.floor(Math.random * caracteres.length));
+      cadena += caracter_random;
+    }
+    const dominio = "@devflix.com";
+    cadena += dominio;
+    return cadena;
+  };
+
   const handleAutocompletar = (e) => {
     e.preventDefault();
+    const email_generado = generarEmail(6);
     dispatch({ field: "name", value: "User Default" });
-    dispatch({ field: "email", value: "userdefault@devflix.com" }); // generar nuevo email para no repetir
+    dispatch({ field: "email", value: email_generado }); // generar nuevo email para no repetir
     dispatch({ field: "password", value: "12345%validar2" });
     dispatch({ field: "password2", value: "12345%validar2" });
     dispatch({ field: "age", value: 20 });
@@ -166,7 +184,7 @@ function Register({}) {
       {/* Enlace a la ruta principal */}
       <div className="mt-6 w-5/6 md:w-2/4 pt-12 md:pt-8 gap-y-6">
         <form
-          className="flex flex-col items-center justify-center gap-y-6 min-w-full md:py-16 shadow-lg bg-base-200  
+          className="flex flex-col items-center justify-center gap-y-6 min-w-full md:py-16 shadow-lg bg-base-200 rounded-lg  
           [&>div>input]:mb-1 [&>div>input]:rounded-md [&>div>input]:w-full [&>div>input]:p-1.5 py-8 md:p-0
           [&>div>label]:text-lg [&>div]:flex [&>div]:flex-col [&>div]:gap-y-1 [&>div]:w-3/4 sm:[&>div]:w-4/6 xl:[&>div]:w-2/6 "
         >
